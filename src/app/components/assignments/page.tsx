@@ -1,11 +1,11 @@
 // Assignments.js
 
-import React from 'react';
+import React from "react";
 
 const Assignments = () => {
   const assignments = [
-    { title: 'Assignment 1', dueDate: '01/07/24' },
-    { title: 'Assignment 2', dueDate: '10/07/24' },
+    { title: "Assignment 1", dueDate: "01/07/24" },
+    { title: "Assignment 2", dueDate: "10/07/24" },
   ];
 
   return (
@@ -21,6 +21,6 @@ const Assignments = () => {
       </ul>
     </div>
   );
-}
+};
 
 export default Assignments;
