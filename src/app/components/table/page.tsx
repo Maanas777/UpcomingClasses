@@ -53,11 +53,12 @@ const InstructorTable = () => {
         </div>
       </div>
       <div className="block lg:hidden">
-        {currentData.map((instructor, index) => (
+        {filteredInstructors.map((instructor, index) => (
           <MobileView key={index} instructor={instructor} />
         ))}
       </div>
-      <div className="flex justify-center mt-4">
+      {/* Pagination controls only visible on larger screens */}
+      <div className="hidden lg:flex justify-center mt-4">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}

@@ -10,7 +10,7 @@ const MobileView = ({ instructor }: { instructor: Instructor }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleBookNowClick = () => {
-
+    console.log('jello, butieon')
     setIsPopupOpen(true); // Open the modal when "Book now" button is clicked
   };
 

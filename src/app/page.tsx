@@ -17,7 +17,7 @@ const Page = () => {
           <Nav />
         </nav>
         <div className="flex-1 flex overflow-hidden">
-          <div className="flex-1 p-4 overflow-y-hidden">
+          <div className="flex-1 p-4 overflow-y-auto">
             <Table />
           </div>
           {/* Assignments - hidden on small screens */}
