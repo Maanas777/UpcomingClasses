@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Upcoming Classes
+
+## Overview
+
+This project is a developer task to recreate an "Upcoming Classes" panel based on a Figma design using React.js and TailwindCSS.
+
+## Features
+
+- Pixel-perfect UI recreation using reusable components.
+- Functionalities:
+  - "Booked only" filter shows booked participants with timer or "Join" button if they are live.
+  - "Book now" when clicked should start a timer.
+- Bonus Features:
+  - Pagination functionality.
+
+## Technical Stack
+
+- **Framework:** Next.js
+- **Language:** TypeScript
+- **Styling:** TailwindCSS
+- **Icon Library:** Lucide
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js
+- npm
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/Maanas777/UpcomingClasses
+   cd UpcomingClasses
 
-## Learn More
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+3. Development
+To run the project locally:
+ npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ 4. Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ The project has been deployed and is accessible at 'https://upcoming-classes-jqz6mt8su-maanas777s-projects.vercel.app'.
