@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 
 
-const page = () => {
+const Page = () => {
 
 
 const [toggle, settoggle] = useState(false)
@@ -50,4 +50,4 @@ const togglehandle=()=>{
   );
 };
 
-export default page;
+export default Page;
