@@ -1,4 +1,5 @@
 // components/TableRow.tsx
+
 "use client";
 import React, { useEffect, useState } from "react";
 import { Instructor } from "@/types/components/table";
@@ -8,38 +9,38 @@ import BlueButton from "./blueButton";
 import Modal from "./modal";
 
 const TableRow = ({ instructor }: { instructor: Instructor }) => {
-  const [timer, setTimer] = useState<number | null>(null); // State to hold timer value
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to control modal visibility
+  const [timer, setTimer] = useState<number | null>(null); // State for countdown timer
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State for modal open/close
 
-  // Handler for "Book now" button click
+  // Open modal when 'Book Now' button is clicked
   const handleBookNowClick = () => {
     setIsPopupOpen(true);
   };
 
-  // Handler for closing the modal
+  // Close modal
   const handlePopupClose = () => {
     setIsPopupOpen(false);
   };
 
-  // Handler for confirming booking and starting the timer
+  // Confirm action and close modal, set initial timer (1 hour)
   const handlePopupConfirm = () => {
     setIsPopupOpen(false);
     const initialTime = 60 * 60; // 1 hour in seconds
-    setTimer(initialTime); // Start the timer countdown
+    setTimer(initialTime);
   };
 
-  // Determine if the instructor's class is live based on date and time
+  // Determine if class is live based on current time and instructor's date
   const isLive =
     new Date(instructor.date).getTime() <= new Date().getTime() &&
     instructor.live;
 
-  // Effect to decrement timer every second
+  // Effect to decrement timer every second until it reaches 0
   useEffect(() => {
     if (timer !== null && timer > 0) {
       const interval = setInterval(() => {
         setTimer((prevTime) => (prevTime ? prevTime - 1 : 0));
       }, 1000);
-      return () => clearInterval(interval); // Clear the interval on component unmount or when timer is reset
+      return () => clearInterval(interval);
     }
   }, [timer]);
 
@@ -76,7 +77,7 @@ const TableRow = ({ instructor }: { instructor: Instructor }) => {
 
   return (
     <div className="table-row lg:table-row">
-      {/* Cell for class subject and live indicator */}
+      {/* Subject and live status */}
       <div className="table-cell p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
         <p className="mb-0 text-xs font-semibold leading-tight transition duration-300 ease-in-out">
           {instructor.subject}
@@ -86,13 +87,12 @@ const TableRow = ({ instructor }: { instructor: Instructor }) => {
             </span>
           )}
         </p>
-        {/* Display formatted date and time */}
+        {/* Date and time */}
         <p className="text-xs text-gray-500 mt-1">
           {formatDateTime(new Date(instructor.date))}
         </p>
       </div>
-
-      {/* Cell for instructor details and "Book now" or timer */}
+      {/* Instructor information */}
       <div className="table-cell p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
         <div className="flex px-2 py-1">
           <div>
@@ -103,6 +103,7 @@ const TableRow = ({ instructor }: { instructor: Instructor }) => {
               alt={instructor.name}
             />
           </div>
+
           <div className="flex flex-col justify-center">
             {/* Instructor name */}
             <h6 className="mb-0 text-sm leading-normal">{instructor.name}</h6>
@@ -112,32 +113,29 @@ const TableRow = ({ instructor }: { instructor: Instructor }) => {
             </p>
           </div>
         </div>
+      </div>
 
-        {/* Display "Book now" button or timer */}
-        <div className="table-cell p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-          {isLive ? (
-            <BlueButton />
-          ) : (
-            timer === null ? (
-              <Button handlClick={handleBookNowClick} text="Book now" /> // Button to book now
-            ) : (
-              <div className="flex items-center mt-2 text-xs font-bold leading-tight text-blue-500">
-                <Clock className="w-4 h-4 mr-1" />{" "}
-                {/* Lucide Clock icon with size classes */}
-                <p>
-                  Time remaining: {Math.floor(timer / 60)}:
-                  {timer % 60 < 10 ? "0" : ""}
-                  {timer % 60}
-                </p>
-              </div>
-            )
-          )}
-
-          {/* Modal for confirming booking */}
-          {isPopupOpen && (
-            <Modal onConfirm={handlePopupConfirm} onClose={handlePopupClose} />
-          )}
-        </div>
+      {/* Action buttons or timer */}
+      <div className="table-cell p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+        {isLive ? (
+          // Display 'Join Now' button for live classes
+          <BlueButton />
+        ) : timer === null ? (
+          // Display 'Book Now' button if timer is not set
+          <Button handlClick={handleBookNowClick} text="Book now" />
+        ) : (
+          // Display countdown timer if timer is set
+          <div className="flex items-center mt-2 text-xs font-bold leading-tight text-blue-500">
+            <Clock className="w-4 h-4 mr-1" />{" "}
+            <p>
+              Time remaining: {Math.floor(timer / 60)}:
+              {timer % 60 < 10 ? "0" : ""}
+              {timer % 60}
+            </p>
+          </div>
+        )}
+        {/* Modal for booking confirmation */}
+        {isPopupOpen && <Modal onConfirm={handlePopupConfirm} onClose={handlePopupClose} />}
       </div>
     </div>
   );
